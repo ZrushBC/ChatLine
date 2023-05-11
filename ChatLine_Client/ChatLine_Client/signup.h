@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QLabel>
 #include "btn.h"
+#include "pop.h"
 #define SIGNUP_H
 
 
@@ -40,6 +41,10 @@ public:
     QLineEdit *re_CL_PassWord;
     //注册
     QPushButton *SignUp_Btn;
+    //登录
+    QPushButton *SignIn_Btn;
+    //弹窗
+    Pop *pop;
 signals:
 
 };

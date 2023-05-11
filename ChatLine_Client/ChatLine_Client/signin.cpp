@@ -58,8 +58,7 @@ SignIn::SignIn(QWidget *parent)
     connect(min_btn,&QPushButton::clicked,this,&SignIn::showMinimized);
     //弹窗
     pop =new Pop(back);
-    pop->resize(200,20);
-    pop->move(100,100);
+    pop->popback->close();
 }
 
 //鼠标按下事件

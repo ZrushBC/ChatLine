@@ -38,4 +38,7 @@ QSqlQuery CL_DB::select_all(QString sql){
 //                 <<query.value(3).toString().toUtf8().data();
 //    }
 }
-
+bool CL_DB::commit_data(QString sql){
+    QSqlQuery query;
+    return query.exec(sql);
+}

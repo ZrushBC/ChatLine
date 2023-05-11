@@ -17,6 +17,7 @@ class CL_DB : public QObject
 public:
     explicit CL_DB(QObject *parent = nullptr);
     QSqlQuery select_all(QString sql);
+    bool commit_data(QString sql);
 private:
     QSqlDatabase db;
     bool init();

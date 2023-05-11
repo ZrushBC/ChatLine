@@ -3,6 +3,7 @@
 #include "cl_socket.h"
 #include "cl_db.h"
 #include <QSqlQuery>
+#include <QDateTime>
 #include <QString>
 #define SERVER_H
 
@@ -19,6 +20,7 @@ public:
 private:
     CL_Socket *socket;
     CL_DB *db;
+    QString getRandomID();
 signals:
 
 };

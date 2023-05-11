@@ -75,7 +75,7 @@ void CL_Socket::readMessage()
 //发送信息
 //0.消息
 //1.登录验证
-//2.
+//2.注册验证
 void CL_Socket::sendMessage(QString str,char type)
 {
     str=type+str;

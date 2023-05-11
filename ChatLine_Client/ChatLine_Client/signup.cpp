@@ -42,6 +42,10 @@ SignUp::SignUp(QWidget *parent)
     SignUp_Btn->setText("注册");
     SignUp_Btn->move(130,210);
     //    SignIn_Btn->resize(100,50);
+    //登录
+    SignIn_Btn =new QPushButton(back);
+    SignIn_Btn->setText("登录");
+    SignIn_Btn->move(230,210);
     //阴影
     effect = new QGraphicsDropShadowEffect(this);
     effect->setColor(QColor(104,104,104));
@@ -58,6 +62,8 @@ SignUp::SignUp(QWidget *parent)
     min_btn->setParent(back);
     min_btn->move(this->width()-min_btn->width()-32,10);
     connect(min_btn,&QPushButton::clicked,this,&SignUp::showMinimized);
+    pop =new Pop(back);
+    pop->popback->close();
 }
 
 //鼠标按下事件

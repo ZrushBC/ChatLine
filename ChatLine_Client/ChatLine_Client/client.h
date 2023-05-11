@@ -7,7 +7,6 @@
 #include <QMouseEvent>
 #include <QPoint>
 #include <QPainter>
-#include <QGraphicsDropShadowEffect>
 #include <QMessageBox>
 #include <QTimer>
 #include <QLabel>
@@ -18,6 +17,7 @@
 #include "signup.h"
 #include "user.h"
 #include "pop.h"
+#include <QTest>//延时  QTest::qSleep()
 #define CLIENT_H
 
 
@@ -35,7 +35,7 @@ private:
     MainWindow *CL;
     CL_Socket *socket;
     SignUp *signup;
-    SignIn signin;
+    SignIn *signin;
     User user;
 signals:
 
