@@ -64,11 +64,13 @@ void CL_Socket::readMessage()
     QString mes=arr.data();
     if(mes[0]!='0'){
         emit sys_signal(mes);
+        return;
     }
     else{
         QString str;
-        str = QDateTime::currentDateTime().toString("dddd yyyy.MM.dd hh:mm:ss") + '\n' + mes.mid(1);
+        str = mes.mid(1);
         emit mes_signal(str);     //传递信息
+        return;
     }
 }
 

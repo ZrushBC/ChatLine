@@ -34,11 +34,12 @@ void CL_Socket::readMessage()
             arr = clientList_sock.at(i)->readAll();      //接收客户端发送的字节信息
             if(arr.isNull())  continue;   //空代表不是该客户端发送
             currentClint = clientList_sock.at(i);
-            if(arr.data()[0]!=0){
+            if(arr.data()[0]!='0'){
                 emit sys_signal(arr.data(),currentClint);
                 return;
             }
-            str = QDateTime::currentDateTime().toString("dddd.yyyy.MM.dd HH:mm:ss") + '\n' + arr.data();
+            QString mes=arr.data();
+            str = "0"+QDateTime::currentDateTime().toString("dddd.yyyy.MM.dd HH:mm:ss") + '\n' + mes.mid(1);
             break;
         }
         qDebug()<<str;     //显示信息

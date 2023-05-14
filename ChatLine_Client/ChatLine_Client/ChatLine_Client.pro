@@ -12,8 +12,10 @@ CONFIG += c++17
 
 SOURCES += \
     btn.cpp \
+    chat.cpp \
     cl_socket.cpp \
     client.cpp \
+    homie.cpp \
     main.cpp \
     mainwindow.cpp \
     pop.cpp \
@@ -23,8 +25,10 @@ SOURCES += \
 
 HEADERS += \
     btn.h \
+    chat.h \
     cl_socket.h \
     client.h \
+    homie.h \
     mainwindow.h \
     pop.h \
     signin.h \

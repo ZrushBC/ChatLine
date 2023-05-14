@@ -10,7 +10,7 @@ Client::Client(QObject *parent)
     signin=new SignIn;
     //接受到信息，并显示
     connect(socket,&CL_Socket::mes_signal,this,[=](QString str){
-        CL->text_read->append(str);
+        CL->chat->text_read->append(str);
     });
 
     //接受到系统信息，处理
@@ -56,10 +56,10 @@ Client::Client(QObject *parent)
     });
 
     //点击发送按钮
-    connect(CL->send_btn,&QPushButton::clicked,this,[=](){
-        QString str = CL->text_send->toPlainText();
-        CL->text_send->clear();
-        socket->sendMessage(str);
+    connect(CL->chat->send_btn,&QPushButton::clicked,this,[=](){
+        QString str = CL->chat->text_send->toPlainText();
+        CL->chat->text_send->clear();
+        socket->sendMessage(str,'0');
     });
 
     //登录界面点击登录按钮
