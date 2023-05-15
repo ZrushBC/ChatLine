@@ -11,7 +11,7 @@ Btn::Btn(QPushButton *parent)
 }
 
 Btn::Btn(bool btn_type){
-    this->resize(16,16);
+    this->setFixedSize(16,16);
     if(btn_type){
         this->setStyleSheet("QPushButton{background-color:rgb(185,185,185);border:0px;border-radius:8px;}"
                             "QPushButton:hover{background-color:rgb(255, 84, 57);}"

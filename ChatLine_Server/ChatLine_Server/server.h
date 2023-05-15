@@ -21,6 +21,7 @@ private:
     CL_Socket *socket;
     CL_DB *db;
     QString getRandomID();
+    QString getFriendList(QString id);
 signals:
 
 };

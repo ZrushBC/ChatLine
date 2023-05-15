@@ -55,12 +55,12 @@ SignUp::SignUp(QWidget *parent)
     //关闭按钮
     Btn *close_btn=new Btn(true);
     close_btn->setParent(back);
-    close_btn->move(this->width()-close_btn->width()-12,10);
+    close_btn->move(this->width()-close_btn->width()-18,10);
     connect(close_btn,&QPushButton::clicked,this,&SignUp::close);
     //最小化按钮
     Btn *min_btn=new Btn(false);
     min_btn->setParent(back);
-    min_btn->move(this->width()-min_btn->width()-32,10);
+    min_btn->move(this->width()-min_btn->width()-43,10);
     connect(min_btn,&QPushButton::clicked,this,&SignUp::showMinimized);
     pop =new Pop(back);
     pop->popback->close();

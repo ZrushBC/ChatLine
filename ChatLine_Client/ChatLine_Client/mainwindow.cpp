@@ -18,10 +18,10 @@ MainWindow::MainWindow(QWidget *parent)
 // 创建一个QWidget作为导航栏
     QWidget *navWidget = new QWidget(mainWidget);
     //设置大小
-    navWidget->setFixedWidth(150);
+    navWidget->setFixedWidth(80);
 // 创建两个QPushButton作为导航栏的按钮，分别代表聊天和好友
-    chatBtn = new QPushButton("主页", navWidget);
-    homieBtn = new QPushButton("设置", navWidget);
+    chatBtn = new QPushButton("聊天", navWidget);
+    homieBtn = new QPushButton("好友", navWidget);
     //设置大小
     chatBtn->setFixedHeight(50);
     homieBtn->setFixedHeight(50);
@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     vnavLayout->addStretch();
 // 设置导航栏的布局
     navWidget->setLayout(vnavLayout);
-    navWidget->setStyleSheet("background:rgb(185,185,185)");
+    navWidget->setStyleSheet("background:rgb(235,235,235)");
 //navWidget->resize(80,this->width());
 
 //分界线
@@ -46,9 +46,10 @@ MainWindow::MainWindow(QWidget *parent)
     line->setFrameShadow(QFrame::Sunken);
 // 创建一个QStackedWidget作为页面容器
     pages = new QStackedWidget(mainWidget);
-    //pages->setStyleSheet("background:rgb(95,159,255)");
+    pages->setStyleSheet("background:rgb(235, 233, 231)");
 // 创建两个页面QWidget，分别代表聊天、好友
     chat = new Chat(pages);
+    chat->add_chat();
     homie = new Homie(pages);
     // 将页面添加到页面容器中
     pages->addWidget(chat);
@@ -69,18 +70,24 @@ MainWindow::MainWindow(QWidget *parent)
     QVBoxLayout *hnavLayout = new QVBoxLayout();
     //创建一个头部导航栏
     QWidget *headWidget = new QWidget(this);
-    headWidget->setFixedHeight(30);
+    headWidget->setFixedHeight(40);
     headWidget->setStyleSheet("background:rgb(255,189,255)");
     //关闭按钮
     Btn *close_btn=new Btn(true);
     close_btn->setParent(headWidget);
-    close_btn->move(this->width()-close_btn->width()-12,10);
+//    close_btn->move(this->width()-close_btn->width()-12,10);
     connect(close_btn,&QPushButton::clicked,this,&MainWindow::close);
     //最小化按钮
     Btn *min_btn=new Btn(false);
     min_btn->setParent(headWidget);
-    min_btn->move(this->width()-min_btn->width()-32,10);
+//    min_btn->move(this->width()-min_btn->width()-32,10);
     connect(min_btn,&QPushButton::clicked,this,&MainWindow::showMinimized);
+
+    QHBoxLayout *btnLayout = new QHBoxLayout();
+    btnLayout->addStretch();
+    btnLayout->addWidget(min_btn);
+    btnLayout->addWidget(close_btn);
+    headWidget->setLayout(btnLayout);
     //设置布局
     hnavLayout->setSpacing(0); //控件间间距
     hnavLayout->setMargin(0);

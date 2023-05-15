@@ -18,6 +18,10 @@ public:
     QTextBrowser *text_read;
     QPlainTextEdit *text_send;
     QPushButton *send_btn;
+    QWidget *headWidget;//头部
+    QWidget *leftWidget;//左侧
+    QVBoxLayout *lLayout;//左部布局
+    void add_chat();
 signals:
 
 };

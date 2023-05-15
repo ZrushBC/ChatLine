@@ -17,7 +17,7 @@ Server::Server(QObject *parent)
             QSqlQuery res=db->select_all(sql);
             qDebug()<<"查询结果为"<<res.size();
             if(res.size()){
-                socket->sendMessage("11",sock);
+                socket->sendMessage("11"+getFriendList(CL_Id),sock);
             }else{
                 socket->sendMessage("10",sock);
             }
@@ -49,13 +49,18 @@ void Server::init(){
     QSqlQuery res=db->select_all(sql);
 //    qDebug()<<res.size();
 //    qDebug()<<getRandomID();
+//    while(res.next()){
+//        qDebug()<<query.value(0).toInt()
+//                 <<query.value("name").toString().toUtf8().data()
+//                 <<query.value(2).toInt()
+//                 <<query.value(3).toInt();
+//    }
 }
 
 //获取长度为6的随机字符串作为分配的id
 QString Server::getRandomID(){
     qsrand(QDateTime::currentMSecsSinceEpoch());
-
-    const char ch[] = "abcdefghijklmnopqrstuvwxyz0123456789";
+    const char ch[] = "abcdefghijklmnopqrstuvwxyz123456789";
     int size = sizeof(ch);
     QString res;
     int num = 0;
@@ -65,4 +70,18 @@ QString Server::getRandomID(){
         res.append(ch[num]);
     }
     return res;
+}
+QString Server::getFriendList(QString id){
+    QString sql="SELECT cl_id, cl_name, cl_face "
+          "FROM friends "
+          "JOIN users ON friends.friend_id = users.cl_id "
+          "WHERE user_id = '"+id+"'";
+    QSqlQuery query=db->select_all(sql);
+    QString res;
+    while(query.next()){
+        res=res+" "+query.value(0).toString()+" "+query.value(1).toString()+" "+query.value(2).toString();
+    }
+    qDebug()<<res<<"\n"<<res.indexOf(" ");
+    return res.mid(1);
+
 }

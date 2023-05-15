@@ -20,6 +20,7 @@ Client::Client(QObject *parent)
             if(str[1]=='1'){
                 signin->hide();
                 CL->show();
+                friend_list(str.mid(2));
             }else{
                 signin->pop->label->setText("账号或密码错误");
                 emit signin->pop->show_signal();
@@ -92,8 +93,14 @@ Client::Client(QObject *parent)
         if(signup->CL_Name->text().isEmpty()){
             signup->pop->label->setText("请输入昵称");
             emit signup->pop->show_signal();
+        }else if(signup->CL_Name->text().indexOf(" ")!=-1){
+            signup->pop->label->setText("昵称中不能含有空格");
+            emit signup->pop->show_signal();
         }else if(signup->CL_PassWord->text().isEmpty()){
             signup->pop->label->setText("请输入密码");
+            emit signup->pop->show_signal();
+        }else if(signup->CL_PassWord->text().indexOf(" ")!=-1){
+            signup->pop->label->setText("密码中不能含有空格");
             emit signup->pop->show_signal();
         }else if(signup->re_CL_PassWord->text().isEmpty()){
             signup->pop->label->setText("请再次输入密码");
@@ -121,4 +128,9 @@ Client::Client(QObject *parent)
 
 void Client::init(){
     signin->show();
+}
+
+void Client::friend_list(QString friends){
+    qDebug()<<friends.indexOf(" ")<<friends.mid(friends.indexOf(" ")+1).indexOf(" ");
+    CL->homie->add_homie("friends");
 }

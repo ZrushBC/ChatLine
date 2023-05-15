@@ -31,6 +31,7 @@ public:
     explicit Client(QObject *parent = nullptr);
 
     void init();
+    void friend_list(QString);
 private:
     MainWindow *CL;
     CL_Socket *socket;
